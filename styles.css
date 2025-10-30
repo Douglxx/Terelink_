@@ -1,0 +1,796 @@
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #054ff5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #f7f7f7;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            height: auto;
+           
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #0033cc;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #ff7b00;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+        }
+
+        .client-area {
+            background-color: #ff7b00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .client-area:hover {
+            background-color: #e86e00;
+            box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+        }
+
+        /* Seção Hero */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 3;
+        }
+
+        .hero-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-prev {
+            left: 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .hero-next {
+            right: 0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .hero-dot.active {
+            background: #FF9A00;
+        }
+
+        /* Seção de Planos */
+        .plans {
+            padding: 80px 0;
+            background-color: #054ff5;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .plan-card {
+            background: #f1eee7;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 325px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1a3a8f;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .popular-badge {
+            background: linear-gradient(135deg, #FF9A00, #e08600);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(255, 154, 0, 0.3);
+        }
+
+        .plan-card p {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1rem;
+        }
+
+        .plan-features li:before {
+            content: "*";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .plan-card .btn {
+            background: #ff912f;
+            color: white;
+            padding: 15px 0px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+
+
+        .plan-card .btn:hover {
+            background: linear-gradient(135deg, #2a56c6, #3a66e6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(42, 86, 198, 0.4);
+        }
+
+        #details-plan {
+            background: none;
+            color: white;
+        }
+
+        #details-plan:hover {
+            box-shadow: none;
+        }
+
+
+
+        /* Destaque para o plano do meio */
+        .plan-card:nth-child(2) {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 154, 0, 0.2);
+        }
+
+        .plan-card:nth-child(2) .btn {
+            background: #ff912f;
+        }
+
+        .plan-card:nth-child(2) .btn:hover {
+            background: linear-gradient(135deg, #e08600, #c97600);
+            box-shadow: 0 5px 15px rgba(255, 154, 0, 0.4);
+        }
+
+        /* Modal para detalhes dos planos */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: #1a3a8f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FF9A00;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .modal-features li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1.1rem;
+        }
+
+        .modal-features li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .modal-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #1a3a8f, #2a56c6);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .modal-btn:hover {
+            background: linear-gradient(135deg, #2a56c6, #3a66e6);
+        }
+
+        /*Seção de Benefícios*/
+        .banner-center {
+            width: 100%;
+
+        }
+
+        .banner-benefits {
+            width: 100%;
+        }
+
+        /*Seção área de cobertura*/
+        .cobertura {
+            width: 100%;
+        }
+
+        .cobertura:hover {
+            filter: brightness(0.5);
+        }
+
+        /* Seção de Dúvidas Frequentes */
+        .faq-section {
+            padding: 80px 0;
+            background: #054ff5;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #0a2c98;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #0066ff;
+            color: #f4f1eb;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #f4f1eb;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .linha {
+            border: 0;
+            height: 1px;
+            background-color: black;
+        }
+
+        /* Seção Cliente Terelink */
+        .client-section {
+            padding: 80px 0;
+            background: #054ff5;
+        }
+
+        .client-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .client-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 50px;
+            font-weight: 700;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .client-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .client-card {
+            background: #054ff5;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            width: 200px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .client-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .client-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .client-card h3 {
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Seção de Dicas */
+        .tips-section {
+            background: #054ff5;
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tips-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tip-card {
+            background: #81a6f9;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            width: 330px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .tip-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .tip-card h3 {
+            font-size: 1.1rem;
+            color: #000;
+            text-align: center;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .tip-link {
+            text-align: center;
+            color: #054ff5;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .tip-link:hover {
+
+            color: white;
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: #00123a;
+            color: #fff;
+            padding: 60px 20px 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .footer-logo {
+            width: 180px;
+            margin-bottom: 25px;
+        }
+
+        .footer-btn {
+            display: inline-block;
+            background-color: #ff7b00;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .footer-btn:hover {
+            background-color: #e56f00;
+        }
+
+        .footer-column h3 {
+            color: #0066ff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column a,
+        .footer-column li {
+            font-size: 0.95rem;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 6px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ff7b00;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #ff7b00;
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .plans-container {
+                gap: 15px;
+            }
+
+            .plan-card {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                height: 50vh;
+            }
+
+            .plans-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .plan-card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .plan-card:nth-child(2) {
+                transform: scale(1);
+            }
+
+            .client-grid {
+                gap: 20px;
+            }
+
+            .client-card {
+                width: 150px;
+                padding: 20px 15px;
+            }
+
+            .client-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 40vh;
+            }
+
+            .section-title,
+            .client-title {
+                font-size: 2rem;
+            }
+
+            .plan-card {
+                padding: 20px 15px;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 20px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 20px 15px;
+            }
+
+            .tips-container {
+                gap: 20px;
+            }
+
+            .tip-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/icone.jpeg">
+    <title>Informações Regulatórias - Terelink</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #1a3a8f, #2a56c6);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FF9A00;
+        }
+
+        /* Seção Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a3a8f, #2a56c6);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Seção de Informações Regulatórias */
+        .regulatory-section {
+            padding: 80px 0;
+            background: #f5f7fa;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #1a3a8f;
+        }
+
+        .section-subtitle {
+            font-size: 1.8rem;
+            color: #1a3a8f;
+            margin: 40px 0 20px;
+            border-bottom: 2px solid #FF9A00;
+            padding-bottom: 10px;
+        }
+
+        .regulatory-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            border-left: 4px solid #1a3a8f;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .info-card h3 {
+            color: #1a3a8f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-card h3 i {
+            margin-right: 10px;
+            color: #FF9A00;
+        }
+
+        .info-card p {
+            margin-bottom: 5px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1a3a8f, #2a56c6);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(26, 58, 143, 0.3);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .regulatory-points {
+            margin: 20px 0;
+        }
+
+        .regulatory-point {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .regulatory-point:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #1a3a8f;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .clause-section {
+            margin-bottom: 40px;
+        }
+
+        .clause-title {
+            font-size: 1.4rem;
+            color: #1a3a8f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .clause-title i {
+            margin-right: 10px;
+            color: #FF9A00;
+        }
+
+        .clause-content {
+            padding-left: 30px;
+        }
+
+        .clause-item {
+            margin-bottom: 15px;
+        }
+
+        .clause-item strong {
+            color: #1a3a8f;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1a3a8f, #2a56c6);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0 10px 15px;
+            box-shadow: 0 3px 10px rgba(26, 58, 143, 0.3);
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #2a56c6, #3a66e6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 58, 143, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+        }
+
+        .contact-info-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid #FF9A00;
+        }
+
+        .contact-info-box h3 {
+            color: #1a3a8f;
+            margin-bottom: 15px;
+        }
+
+        .contact-info-box p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info-box i {
+            margin-right: 10px;
+            color: #FF9A00;
+            width: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .info-table th {
+            background: #1a3a8f;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .info-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .info-table tr:hover {
+            background: #e9ecef;
+        }
+
+        /* Rodapé */
+        footer {
+            background: #1a3a8f;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #FF9A00;
+        }
+
+        .contact-details {
+            text-align: left;
+        }
+
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            color: #FF9A00;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #FF9A00;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .regulatory-content {
+                padding: 20px;
+            }
+
+            .download-btn {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-details {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span><img width=20% height=32% src="img/logo.png" alt="Terelink"></span>
+                </div>
+                <nav>
+                    <ul>
+                         <li><a href="index.html">Início</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                        <li><a href="#beneficios">Benefícios</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="info.html">Informações</a></li>
+                        <li><a href="teste.html">Teste</a></li>
+                        <li><a href="#faq">Dúvidas</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Informações Regulatórias</h1>
+            <p>Transparência e conformidade com as normas da ANATEL e legislação brasileira de telecomunicações</p>
+        </div>
+    </section>
+
+    <!-- Seção de Informações Regulatórias -->
+    <section class="regulatory-section" id="regulatorio">
+        <div class="container">
+            <h2 class="section-title">Informações Legais e Regulatórias</h2>
+            
+            <div class="regulatory-content">
+                <!-- Informações da Empresa -->
+                <div class="info-card">
+                    <h3><i class="fas fa-building"></i> Identificação Legal da Empresa</h3>
+                    <p><strong>Razão Social:</strong> TERELINK INTERNET LTDA ME</p>
+                    <p><strong>CNPJ:</strong> 48.130.681/00001-39</p>
+                    <p><strong>Endereço:</strong> Rua Doutor José Mendonça Clark, 90, Sala 202, Várzea, Teresópolis/RJ</p>
+                    <p><strong>Telefone:</strong> (21) 2642-0068 (Fixo e WhatsApp)</p>
+                    <p><strong>E-mail:</strong> ouvidoria@terelink.com.br</p>
+                </div>
+
+                <!-- Autorização Regulatória -->
+                <div class="info-card">
+                    <h3><i class="fas fa-file-contract"></i> Autorização Regulatória</h3>
+                    <p><strong>Ato nº 228, de 10 de janeiro de 2023</strong></p>
+                    <p><strong>Processo nº:</strong> 53500.339233/2022-49</p>
+                    <p><strong>Serviço Autorizado:</strong> Serviço de Comunicação Multimídia (SCM)</p>
+                </div>
+
+                <!-- Destaque Importante -->
+                <div class="highlight-box">
+                    <h3><i class="fas fa-exclamation-circle"></i> Informações Importantes</h3>
+                    <p>A Terelink é uma Prestadora de Pequeno Porte (PPP), conforme definido pela ANATEL, o que implica em algumas isenções de obrigações previstas nos regulamentos, mantendo sempre o compromisso com a qualidade e transparência perante nossos clientes.</p>
+                </div>
+
+                <!-- Cláusulas do Contrato -->
+                <h3 class="section-subtitle">Principais Cláusulas Contratuais</h3>
+
+                <!-- Cláusula 1: Objeto -->
+                <div class="clause-section">
+                    <h4 class="clause-title"><i class="fas fa-bullseye"></i> CLÁUSULA PRIMEIRA - DO OBJETO</h4>
+                    <div class="clause-content">
+                        <div class="clause-item">
+                            <p>Contrato para prestação do Serviço de Comunicação Multimídia (SCM) de internet banda larga via fibra óptica (FTTH).</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Prazo para início da prestação:</strong> Definido entre as partes no termo de adesão, considerando condições climáticas e autorizações necessárias.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Disponibilidade:</strong> Serviço prestado de forma ininterrupta, 24 horas por dia, 7 dias por semana.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cláusula 2: Comodato -->
+                <div class="clause-section">
+                    <h4 class="clause-title"><i class="fas fa-wifi"></i> CLÁUSULA SEGUNDA - DO COMODATO</h4>
+                    <div class="clause-content">
+                        <div class="clause-item">
+                            <p><strong>Equipamentos:</strong> A PRESTADORA cede equipamentos necessários em regime de comodato.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Responsabilidades do ASSINANTE:</strong> Fornecer infraestrutura adequada, ponto de energia elétrica com aterramento e autorizações necessárias.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Devolução:</strong> Em caso de rescisão, o ASSINANTE deve devolver os equipamentos em até 5 dias úteis ou pagar o valor correspondente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cláusula 3: Permanência -->
+                <div class="clause-section">
+                    <h4 class="clause-title"><i class="fas fa-calendar-alt"></i> CLÁUSULA TERCEIRA - DA PERMANÊNCIA</h4>
+                    <div class="clause-content">
+                        <div class="clause-item">
+                            <p><strong>Vigência:</strong> Contrato com validade de 12 meses, prorrogável automaticamente por iguais períodos.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Cancelamento:</strong> Qualquer das partes pode denunciar o contrato com aviso prévio de 30 dias.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cláusula 4: Fidelidade e Multa -->
+                <div class="clause-section">
+                    <h4 class="clause-title"><i class="fas fa-handshake"></i> CLÁUSULA QUARTA - QUEBRA DE FIDELIDADE E MULTA RECISÓRIA</h4>
+                    <div class="clause-content">
+                        <div class="clause-item">
+                            <p><strong>Prazo de fidelidade:</strong> 12 meses a partir da assinatura do contrato.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Multa por rescisão antecipada:</strong> 10% do valor total dos serviços que seriam prestados até o final do prazo de fidelidade.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Isenção da multa:</strong> Aplicável em caso de falha comprovada na prestação dos serviços pela PRESTADORA.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direitos e Deveres -->
+                <h3 class="section-subtitle">Direitos e Deveres</h3>
+
+                <div class="table-container">
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Direitos do Assinante</th>
+                                <th>Deveres do Assinante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Acesso aos serviços dentro dos padrões de qualidade</td>
+                                <td>Utilizar adequadamente os serviços e equipamentos</td>
+                            </tr>
+                            <tr>
+                                <td>Liberdade de escolha da PRESTADORA e do plano</td>
+                                <td>Efetuar pontualmente o pagamento dos serviços</td>
+                            </tr>
+                            <tr>
+                                <td>Prévio conhecimento das condições de contratação</td>
+                                <td>Comunicar roubo, furto ou extravio de dispositivos</td>
+                            </tr>
+                            <tr>
+                                <td>Inviolabilidade e segredo das comunicações</td>
+                                <td>Permitir acesso para manutenção quando necessário</td>
+                            </tr>
+                            <tr>
+                                <td>Não suspensão do serviço sem solicitação</td>
+                                <td>Responsabilizar-se por uso indevido dos serviços</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Parâmetros de Qualidade -->
+                <div class="clause-section">
+                    <h4 class="clause-title"><i class="fas fa-chart-line"></i> CLÁUSULA OITAVA - DOS PARÂMETROS DE QUALIDADE</h4>
+                    <div class="clause-content">
+                        <div class="regulatory-points">
+                            <div class="regulatory-point">Fornecimento de sinais respeitando as características estabelecidas na regulamentação</div>
+                            <div class="regulatory-point">Disponibilidade dos serviços nos índices contratados</div>
+                            <div class="regulatory-point">Emissão de sinais eletromagnéticos nos níveis estabelecidos</div>
+                            <div class="regulatory-point">Divulgação de informações sobre alterações de preços e condições</div>
+                            <div class="regulatory-point">Rapidez no atendimento às solicitações e reclamações</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manutenção e Suporte -->
+                <div class="clause-section">
+                    <h4 class="clause-title"><i class="fas fa-tools"></i> CLÁUSULA NONA - DA MANUTENÇÃO E QUALIDADE DE TRANSMISSÃO</h4>
+                    <div class="clause-content">
+                        <div class="clause-item">
+                            <p><strong>Manutenção:</strong> Realizada exclusivamente pela PRESTADORA ou assistência técnica autorizada.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Prazo para atendimento:</strong> Até 48 horas a contar da solicitação protocolada.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Visita técnica produtiva:</strong> Cobrada quando os defeitos não são atribuíveis à PRESTADORA.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suspensão e Penalidades -->
+                <div class="clause-section">
+                    <h4 class="clause-title"><i class="fas fa-exclamation-triangle"></i> SUSPENSÃO E PENALIDADES POR FALTA DE PAGAMENTO</h4>
+                    <div class="clause-content">
+                        <div class="clause-item">
+                            <p><strong>Multa por atraso:</strong> 2% sobre o valor do débito + juros de 1% ao mês.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Suspensão parcial:</strong> Após 15 dias da notificação de débito vencido.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Suspensão total:</strong> Após 30 dias do vencimento.</p>
+                        </div>
+                        <div class="clause-item">
+                            <p><strong>Rescisão contratual:</strong> Após 30 dias da suspensão total do serviço.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contato ANATEL -->
+                <div class="contact-info-box">
+                    <h3><i class="fas fa-phone-alt"></i> Central de Atendimento ANATEL</h3>
+                    <p><i class="fas fa-phone"></i> <strong>1331</strong> - Atendimento geral</p>
+                    <p><i class="fas fa-assistive-listening-systems"></i> <strong>1332</strong> - Atendimento para pessoas com deficiência auditiva</p>
+                    <p><i class="fas fa-clock"></i> Funcionamento: Segunda a sexta-feira, 8h às 20h</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Endereço: SAUS, Quadra 06, Blocos C, E, F e H, Brasília/DF - CEP 70.070-940</p>
+                </div>
+
+                <!-- Download de Documentos -->
+                <div class="download-section">
+                    <h3>Documentos para Download</h3>
+                    <p>Para informações completas, baixe nossos documentos oficiais:</p>
+                    <a href="PDFs/contrato cliente.pdf" class="download-btn" download>
+                        <i class="fas fa-file-contract"></i> Contrato de Adesão Completo
+                    </a>
+                    <a href="PDFs/site.pdf" class="download-btn" download>
+                        <i class="fas fa-file-pdf"></i> Regulamento do Serviço
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Terelink</h3>
+                    <p>Internet 100% Fibra Óptica para sua casa ou empresa.</p>
+                    <div class="social-links">
+                        <a href="https://api.whatsapp.com/message/LUQTRA3DCUPMF1?autoload=1&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/terelinkinternet/"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/terelinkinternet/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#planos">Planos</a></li>
+                        <li><a href="index.html#beneficios">Benefícios</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="#regulatorio">Informações</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section contact-details">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone-alt"></i> (21) 2642-0068</p>
+                    <p><i class="fas fa-envelope"></i> ouvidoria@terelink.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua Doutor José Mendonça Clark, 90 Sala 202, Várzea, Teresópolis/RJ</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Terelink. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navegação suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Destaque para a seção atual no menu
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

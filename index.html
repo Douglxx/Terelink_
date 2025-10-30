@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/icone1.jpg">
+    <title>Terelink - Internet Fibra Óptica</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #054ff5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #f7f7f7;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            height: auto;
+           
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #0033cc;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #ff7b00;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+        }
+
+        .client-area {
+            background-color: #ff7b00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .client-area:hover {
+            background-color: #e86e00;
+            box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+        }
+
+        /* Seção Hero */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 3;
+        }
+
+        .hero-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-prev {
+            left: 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .hero-next {
+            right: 0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .hero-dot.active {
+            background: #FF9A00;
+        }
+
+        /* Seção de Planos */
+        .plans {
+            padding: 80px 0;
+            background-color: #054ff5;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .plan-card {
+            background: #f1eee7;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 325px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1a3a8f;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .popular-badge {
+            background: linear-gradient(135deg, #FF9A00, #e08600);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(255, 154, 0, 0.3);
+        }
+
+        .plan-card p {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1rem;
+        }
+
+        .plan-features li:before {
+            content: "*";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .plan-card .btn {
+            background: #ff912f;
+            color: white;
+            padding: 15px 0px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+
+
+        .plan-card .btn:hover {
+            background: linear-gradient(135deg, #2a56c6, #3a66e6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(42, 86, 198, 0.4);
+        }
+
+        #details-plan {
+            background: none;
+            color: white;
+        }
+
+        #details-plan:hover {
+            box-shadow: none;
+        }
+
+
+
+        /* Destaque para o plano do meio */
+        .plan-card:nth-child(2) {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 154, 0, 0.2);
+        }
+
+        .plan-card:nth-child(2) .btn {
+            background: #ff912f;
+        }
+
+        .plan-card:nth-child(2) .btn:hover {
+            background: linear-gradient(135deg, #e08600, #c97600);
+            box-shadow: 0 5px 15px rgba(255, 154, 0, 0.4);
+        }
+
+        /* Modal para detalhes dos planos */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: #1a3a8f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FF9A00;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .modal-features li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1.1rem;
+        }
+
+        .modal-features li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .modal-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #1a3a8f, #2a56c6);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .modal-btn:hover {
+            background: linear-gradient(135deg, #2a56c6, #3a66e6);
+        }
+
+        /*Seção de Benefícios*/
+        .banner-center {
+            width: 100%;
+
+        }
+
+        .banner-benefits {
+            width: 100%;
+        }
+
+        /*Seção área de cobertura*/
+        .cobertura {
+            width: 100%;
+        }
+
+        .cobertura:hover {
+            filter: brightness(0.5);
+        }
+
+        /* Seção de Dúvidas Frequentes */
+        .faq-section {
+            padding: 80px 0;
+            background: #054ff5;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #0a2c98;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #0066ff;
+            color: #f4f1eb;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #f4f1eb;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .linha {
+            border: 0;
+            height: 1px;
+            background-color: black;
+        }
+
+        /* Seção Cliente Terelink */
+        .client-section {
+            padding: 80px 0;
+            background: #054ff5;
+        }
+
+        .client-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .client-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 50px;
+            font-weight: 700;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .client-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .client-card {
+            background: #054ff5;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            width: 200px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .client-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .client-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .client-card h3 {
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Seção de Dicas */
+        .tips-section {
+            background: #054ff5;
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tips-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tip-card {
+            background: #81a6f9;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            width: 330px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .tip-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .tip-card h3 {
+            font-size: 1.1rem;
+            color: #000;
+            text-align: center;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .tip-link {
+            text-align: center;
+            color: #054ff5;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .tip-link:hover {
+
+            color: white;
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: #00123a;
+            color: #fff;
+            padding: 60px 20px 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .footer-logo {
+            width: 180px;
+            margin-bottom: 25px;
+        }
+
+        .footer-btn {
+            display: inline-block;
+            background-color: #ff7b00;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .footer-btn:hover {
+            background-color: #e56f00;
+        }
+
+        .footer-column h3 {
+            color: #0066ff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column a,
+        .footer-column li {
+            font-size: 0.95rem;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 6px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ff7b00;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #ff7b00;
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .plans-container {
+                gap: 15px;
+            }
+
+            .plan-card {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                height: 50vh;
+            }
+
+            .plans-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .plan-card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .plan-card:nth-child(2) {
+                transform: scale(1);
+            }
+
+            .client-grid {
+                gap: 20px;
+            }
+
+            .client-card {
+                width: 150px;
+                padding: 20px 15px;
+            }
+
+            .client-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 40vh;
+            }
+
+            .section-title,
+            .client-title {
+                font-size: 2rem;
+            }
+
+            .plan-card {
+                padding: 20px 15px;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 20px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 20px 15px;
+            }
+
+            .tips-container {
+                gap: 20px;
+            }
+
+            .tip-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ======= CABEÇALHO ======= -->
+    <header>
+        <img width="260px" src="img/logowpp.jpg" alt="TereLink Logo" class="logo">
+
+        <nav>
+            <a href="#planos">Para você</a>
+            <a href="#planos">Para sua Empresa</a>
+            <a href="rest/sobre.html">Quem somos</a>
+            <a href="#">Fale Conosco</a>
+        </nav>
+
+        <a href="#" class="client-area">Área do Cliente</a>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero" id="home">
+        <div class="hero-slides">
+            <div class="hero-slide" style="background-image: url('img/hero3.png');">
+                <div class="container">
+                </div>
+            </div>
+
+            <div class="hero-slide" style="background-image: url('img/hero1.png');">
+                <div class="container">
+                </div>
+            </div>
+
+            <div class="hero-slide" style="background-image: url('img/hero2.png');">
+                <div class="container">
+                </div>
+            </div>
+        </div>
+
+        <button class="hero-nav hero-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="hero-nav hero-next"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="hero-dots">
+            <span class="hero-dot active"></span>
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+        </div>
+    </section>
+
+    <!-- Seção de Planos -->
+    <section class="plans" id="planos">
+        <div class="container">
+            <h2 class="section-title">Nossos Planos</h2>
+            <div class="plans-container">
+                <!-- Plano 1 -->
+                <div class="plan-card" style="background-color: #0a2c98; color: #f1eee7;">
+                    <br><br>
+                    <h3 style="color: white; font-size: 3rem;">350 MEGA</h3>
+                    <div class="price"><span
+                            style="font-size: 1rem; font-weight: normal; color: #f1eee7;">PorR$</span><span
+                            style="color: #f1eee7; font-size: 4rem">89,90</span><span
+                            style="font-size: 1rem; font-weight: normal; color: #f1eee7; ">/mês</span></div>
+                    <hr>
+                    <p style="color: white;">BENEFÍCIOS DO PLANO</p>
+                    <ul class="plan-features">
+                        
+                        <li>&#160;&#160;&#160;100% Fibra Óptica</li>
+                        <li>&#160;&#160;&#160;WI-FI de Última Geração</li>
+                        <li>&#160;&#160;&#160;Estabilidade de Sinal</li>
+                        <li>&#160;&#160;&#160;Download até 350MB</li>
+                        <li>&#160;&#160;&#160;Upload de 150mb</li>
+                        <li>&#160;&#160;&#160;Atendimento Humanizado</li>
+                        <li>&#160;&#160;&#160;Instalação Gratuita*</li>
+                        <li>&#160;&#160;&#160;Suporte Especializado</li>
+                        <br><br><br><br><br>
+                    </ul>
+                    <a href="#" class="btn">Contrate pelo WhatsApp</a>
+                    <a href="#" id="details-plan" class="btn" data-plan="350 MEGA">Conheça os planos</a>
+                </div>
+
+                <!-- Plano 2 (Destaque) -->
+                <div class="plan-card">
+                    <span class="popular-badge">Melhor Oferta</span>
+                    <h3 style="font-size: 3rem; color: #000; margin: 0;"><strong>600 MEGA</strong></h3>
+                    <div class="price"><span style="font-size: 1rem; font-weight: normal;">PorR$</span><span
+                            style="font-size: 5rem; color: #000; font-weight: 800">99,90</span><span
+                            style="font-size: 1rem; font-weight: normal;">/mês</span></div>
+                    <hr class="linha">
+                    <p>BENEFÍCIOS DO PLANO</p>
+                    <ul class="plan-features">
+                        
+                        <li>&#160;&#160;&#160;100% Fibra Óptica</li>
+                        <li>&#160;&#160;&#160;WI-FI de Última Geração</li>
+                        <li>&#160;&#160;&#160;Estabilidade de Sinal</li>
+                        <li>&#160;&#160;&#160;Download até 600MB</li>
+                        <li>&#160;&#160;&#160;Upload de 300mb</li>
+                        <li>&#160;&#160;&#160;Atendimento Humanizado</li>
+                        <li>&#160;&#160;&#160;Instalação Gratuita*</li>
+                        <li>&#160;&#160;&#160;Suporte Especializado</li>
+                        <br><br><br>
+                    </ul>
+                    <a href="#" class="btn">Contrate pelo WhatsApp</a>
+                    <a style="color: #000;" href="#" id="details-plan" class="btn" data-plan="600 Mega">Conheça os
+                        planos</a>
+                </div>
+
+                <!-- Plano 3 -->
+                <div class="plan-card" style="background-color: #0a2c98; color: #f1eee7;">
+                     <br><br>
+                    <h3 style="color: white; font-size: 3rem;">750 MEGA</h3>
+                    <div class="price"><span
+                            style="font-size: 1rem; font-weight: normal; color: white">PorR$</span><span
+                            style="color: #f1eee7; font-size: 4rem">129,90</span><span
+                            style="font-size: 1rem; font-weight: normal; color: white;">/mês</span></div>
+                    <hr>
+                    <p style="color: white;">BENEFÍCIOS DO PLANO</p>
+                    <ul class="plan-features">
+                        <li>&#160;&#160;&#160;100% Fibra Óptica</li>
+                        <li>&#160;&#160;&#160;WI-FI de Última Geração</li>
+                        <li>&#160;&#160;&#160;Estabilidade de Sinal</li>
+                        <li>&#160;&#160;&#160;Download até 750MB</li>
+                        <li>&#160;&#160;&#160;Upload de 350mb</li>
+                        <li>&#160;&#160;&#160;Atendimento Humanizado</li>
+                        <li>&#160;&#160;&#160;Instalação Gratuita*</li>
+                        <li>&#160;&#160;&#160;Suporte Especializado</li>
+                    </ul>
+                    <br><br><br><br><br>
+                    <a href="#" class="btn">Contrate pelo WhatsApp</a>
+                    <a href="#" id="details-plan" class="btn" data-plan="750 Mega">Conheça os planos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para detalhes dos planos -->
+    <div class="modal" id="plan-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title" id="modal-plan-name">Plano</h2>
+            <div class="modal-price" id="modal-plan-price">R$ 0,00/mês</div>
+            <ul class="modal-features" id="modal-plan-features">
+                <!-- As características serão inseridas aqui via JavaScript -->
+            </ul>
+            <a href="https://api.whatsapp.com/message/LUQTRA3DCUPMF1?autoload=1&app_absent=0"
+                class="modal-btn">Solicitar Contratação</a>
+        </div>
+    </div>
+
+    <!--BANNER CENTRAL + BENEFICIOS-->
+    <section>
+        <div>
+            <img src="img/hero1.png" class="banner-center">
+            <div>
+                <div>
+                    <img src="img/Captura de tela 2025-10-05 155308.png" class="banner-benefits">
+                </div>
+    </section>
+
+    <!--ÁREA DE COBERTURA-->
+    <div>
+        <a href="#"><img src="img/Captura de tela 2025-10-05 162423.png" class="cobertura"></a>
+    </div>
+
+
+    <!-- Seção de Dúvidas Frequentes -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Dúvidas Frequentes</h2>
+            <div class="faq-container">
+                <!-- Pergunta 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como funciona a instalação da internet?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nossa equipe técnica agenda a instalação em um horário conveniente para você. A instalação é
+                            gratuita e inclui a configuração do roteador Wi-Fi. O processo geralmente leva de 2 a 4
+                            horas, dependendo da complexidade.</p>
+                    </div>
+                </div>
+
+                <!-- Pergunta 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Qual a cobertura da Terelink em Teresópolis?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Atendemos a maioria dos bairros de Teresópolis. Para verificar se sua região está coberta,
+                            entre em contato conosco pelo telefone 21) 2642-0068 ou através do nosso WhatsApp.</p>
+                    </div>
+                </div>
+
+                <!-- Pergunta 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Há fidelidade no contrato?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, nossos planos têm fidelidade de 12 meses. Durante este período, em caso de cancelamento,
+                            será cobrada uma multa proporcional ao tempo restante do contrato.</p>
+                    </div>
+                </div>
+
+                <!-- Pergunta 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como é realizado o pagamento?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O pagamento pode ser feito via boleto bancário, cartão de crédito ou débito automático. A
+                            fatura é enviada mensalmente por e-mail ou disponibilizada em nossa área do cliente.</p>
+                    </div>
+                </div>
+
+                <!-- Pergunta 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O que fazer em caso de problemas de conexão?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Em caso de problemas, entre em contato com nosso suporte técnico pelo telefone (21) 9999-9999
+                            ou WhatsApp. Nossa equipe está disponível 24 horas por dia, 7 dias por semana para
+                            atendê-lo.</p>
+                    </div>
+                </div>
+
+                <!-- Pergunta 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso alterar meu plano a qualquer momento?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, é possível alterar para um plano superior a qualquer momento. Para downgrade (redução do
+                            plano), é necessário aguardar o término do período de fidelidade ou pagar a multa
+                            contratual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Cliente Terelink -->
+    <section class="client-section">
+        <div class="client-container">
+            <h2 class="client-title">É CLIENTE TERELINK?</h2>
+            <div class="client-grid">
+                <!-- Cartão 1 -->
+                <a href="consultar-contratos.html" class="client-card">
+                    <img src="img/11.png" alt="Consultar Contratos" class="client-icon">
+                    <h3>CONSULTAR CONTRATOS</h3>
+                </a>
+
+                <!-- Cartão 2 -->
+                <a href="atualizar-dados.html" class="client-card">
+                    <img src="img/10.png" alt="Atualizar Dados" class="client-icon">
+                    <h3>ATUALIZAR DADOS</h3>
+                </a>
+
+                <!-- Cartão 3 -->
+                <a href="segunda-via.html" class="client-card">
+                    <img src="img/9.png" alt="2ª Via de Fatura" class="client-icon">
+                    <h3>2ª VIA DE FATURA</h3>
+                </a>
+
+                <!-- Cartão 4 -->
+                <a href="suporte-tecnico.html" class="client-card">
+                    <img src="img/8.png" alt="Suporte Técnico" class="client-icon">
+                    <h3>SUPORTE TÉCNICO</h3>
+                </a>
+
+                <!-- Cartão 5 -->
+                <a href="area-cliente.html" class="client-card">
+                    <img src="img/7.png" alt="Área do Cliente" class="client-icon">
+                    <h3>ÁREA DO CLIENTE</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Dicas -->
+    <section class="tips-section">
+        <div class="container tips-container">
+            <div class="tip-card">
+                <img src="img/wifi.jpg" alt="Wi-Fi fraco" class="tip-image">
+                <h3>WI-FI FRACO? VEJA COMO MELHORAR AGORA MESMO</h3>
+                <a href="#" class="tip-link">SAIBA MAIS</a>
+            </div>
+
+            <div class="tip-card">
+                <img src="img/senha.jpg" alt="Senhas seguras" class="tip-image">
+                <h3>SENHAS SEGURAS: PROTEJA-SE CONTRA GOLPES ONLINE</h3>
+                <a href="#" class="tip-link">SAIBA MAIS</a>
+            </div>
+
+            <div class="tip-card">
+                <img src="img/roteador.jpg" alt="Reiniciar roteador" class="tip-image">
+                <h3>PASSO A PASSO PARA REINICIAR SEU ROTEADOR SEM ERRO</h3>
+                <a href="#" class="tip-link">SAIBA MAIS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Rodapé ======= -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Coluna 1: Logo e contato principal -->
+            <div class="footer-column">
+                <img src="img/logo2.png" alt="Terelink Logo" class="footer-logo">
+                <a href="#" class="footer-btn">Área do Cliente</a>
+            </div>
+
+            <!-- Coluna 2: Contato -->
+            <div class="footer-column">
+                <h3>CONTATO</h3>
+                <p>(21) 2642-0068 <i class="fab fa-whatsapp"></i></p>
+                <p>Suporte Técnico: 8h às 21h Todos os Dias<br>(Incluindo Feriados)</p>
+                <p>Atendimento Presencial: Segunda a Sexta<br>das 9h às 18h (Exceto Feriado)</p>
+                <p>Endereço: Rua Doutor José Mendonça Clark, 90,<br>Várzea - Teresópolis/RJ</p>
+            </div>
+
+            <!-- Coluna 3: Links úteis -->
+            <div class="footer-column">
+                <h3>PARA VOCÊ</h3>
+                <ul>
+                    <li><a href="#">Central de Atendimento</a></li>
+                    <li><a href="#">Teste Sua Velocidade</a></li>
+                    <li><a href="#">Benefícios</a></li>
+                    <li><a href="#">Área de Cobertura</a></li>
+                    <li><a href="#">2ª Via da Fatura</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contratos e Regulamentos</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4: INSTITUCIONAL -->
+            <div class="footer-column">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Qualidade de Serviço</a></li>
+                    <li><a href="#">Anatel</a></li>
+                    <li><a href="#">DPO</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2023 Terelink - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para o carrossel de imagens
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelector('.hero-slides');
+            const dots = document.querySelectorAll('.hero-dot');
+            const prevBtn = document.querySelector('.hero-prev');
+            const nextBtn = document.querySelector('.hero-next');
+            let currentSlide = 0;
+            const totalSlides = document.querySelectorAll('.hero-slide').length;
+
+            // Função para atualizar o carrossel
+            function updateCarousel() {
+                slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+                // Atualizar dots ativos
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            // Evento para próximo slide
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            });
+
+            // Evento para slide anterior
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            });
+
+            // Evento para dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+
+            // Auto-play do carrossel
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }, 5000);
+
+            // Script para FAQ
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    // Fecha todas as outras FAQs
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Abre/Fecha a FAQ atual
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Script para modal de planos
+            const modal = document.getElementById('plan-modal');
+            const closeModal = document.querySelector('.close-modal');
+            const planButtons = document.querySelectorAll('.plan-card .btn');
+
+            // Dados dos planos
+            const planData = {
+                '350 MEGA': {
+                    price: 'R$ 89,90/mês',
+                    features: [
+                        'Instalação: O dia da instalação será definido de acordo com as datas e horários disponíveis, mediante consulta de viabilidade técnica no local. Após a confirmação, nossa equipe entrará em contato para agendar o melhor horário para você.',
+                        'Taxa de Adesão: A oferta possui taxa de adesão gratuita*, mediante permanência mínima de 12 meses. Em caso de cancelamento antes do prazo, será cobrado o valor proporcional.',
+                        'Equipamento: Os equipamentos necessários para transmissão de dados são cedidos em comodato, permanecendo como propriedade da Terelink. O ASSINANTE será responsável pela posse e integridade dos equipamentos, na forma dos artigos 579 a 585 do Código Civil Brasileiro, obrigando-se a realizar a manutenção necessária e a devolvê-los no prazo máximo de 7 (sete) dias por ocasião da extinção ou cancelamento do Contrato, nas mesmas condições de funcionamento, ressalvado o desgaste natural pelo uso. Em caso de não devolução ou devolução em condições inadequadas, o ASSINANTE autoriza a Terelink a cobrar o valor correspondente ao equipamento e a incluir seu nome nos órgãos de proteção ao crédito (ex.: SERASA), referente ao débito gerado.',
+                        'Tabela de Equipamentos:',
+                        'Huawei – ONU GPON Wi-Fi EG8145V5 v2 AC 1200 (com fonte): R$ 429,00',
+                        'Tenda – Roteador ONT GPON HG9 AC 1200 dualband 2 antenas (com fonte): R$ 278,80',
+                        'Nokia – ONT GPON G-0425G-C (com fonte): R$ 289,90',
+                        'PATCH CORD (SC/APC SC/UPC): R$ 10,00',
+                        'Cabo de rede (UTP) – 2flex: R$ 1,09/metro (cobrança proporcional)',
+                        'Cabo DROP (Fibra): R$ 2,00/metro (cobrança proporcional)',
+                        'Conector de Fibra Óptica (2 unidades): R$ 20,00',
+                        'Informações importantes para uma melhor experiência de navegação: Os dispositivos (smartphone, computador etc.) precisam ter as configurações mínimas necessárias para que atinjam o máximo de desempenho, tanto via cabo como via Wi-Fi. O roteador é dual-band, ou seja, tem frequência de 2,4 GHz e 5 GHz. Verifique se os seus dispositivos permitem navegação em ambas frequências. A conexão via cabo proporciona maior estabilidade e menos interferência que o Wi-Fi.',
+                        'Velocidade Contratada: A velocidade informada no plano corresponde à taxa máxima de download e upload contratada, podendo variar conforme condições de uso, quantidade de dispositivos conectados e interferências externas. Para melhor desempenho, recomenda-se conexão via cabo de rede sempre que possível, seguindo orientações da Anatel e Terelink.',
+                        'Franquia de dados: Ilimitada.',
+                        '*Sujeito à análise de crédito.',
+                        'Consulte viabilidade: https://www.google.com/maps/d/u/0/edit?mid=1ShfK1tiFLnN9paq5J5yRAALdB52zVOs&usp=sharing'
+                    ]
+                },
+                '600 Mega': {
+                    price: 'R$ 99,90/mês',
+                    features: [
+                        'Instalação: O dia da instalação será definido de acordo com as datas e horários disponíveis, mediante consulta de viabilidade técnica no local. Após a confirmação, nossa equipe entrará em contato para agendar o melhor horário para você.',
+                        'Taxa de Adesão: A oferta possui taxa de adesão gratuita*, mediante permanência mínima de 12 meses. Em caso de cancelamento antes do prazo, será cobrado o valor proporcional.',
+                        'Equipamento: Os equipamentos necessários para transmissão de dados são cedidos em comodato, permanecendo como propriedade da Terelink. O ASSINANTE será responsável pela posse e integridade dos equipamentos, na forma dos artigos 579 a 585 do Código Civil Brasileiro, obrigando-se a realizar a manutenção necessária e a devolvê-los no prazo máximo de 7 (sete) dias por ocasião da extinção ou cancelamento do Contrato, nas mesmas condições de funcionamento, ressalvado o desgaste natural pelo uso. Em caso de não devolução ou devolução em condições inadequadas, o ASSINANTE autoriza a Terelink a cobrar o valor correspondente ao equipamento e a incluir seu nome nos órgãos de proteção ao crédito (ex.: SERASA), referente ao débito gerado.',
+                        'Tabela de Equipamentos:',
+                        'Huawei – ONU GPON Wi-Fi EG8145V5 v2 AC 1200 (com fonte): R$ 429,00',
+                        'Tenda – Roteador ONT GPON HG9 AC 1200 dualband 2 antenas (com fonte): R$ 278,80',
+                        'Nokia – ONT GPON G-0425G-C (com fonte): R$ 289,90',
+                        'PATCH CORD (SC/APC SC/UPC): R$ 10,00',
+                        'Cabo de rede (UTP) – 2flex: R$ 1,09/metro (cobrança proporcional)',
+                        'Cabo DROP (Fibra): R$ 2,00/metro (cobrança proporcional)',
+                        'Conector de Fibra Óptica (2 unidades): R$ 20,00',
+                        'Informações importantes para uma melhor experiência de navegação: Os dispositivos (smartphone, computador etc.) precisam ter as configurações mínimas necessárias para que atinjam o máximo de desempenho, tanto via cabo como via Wi-Fi. O roteador é dual-band, ou seja, tem frequência de 2,4 GHz e 5 GHz. Verifique se os seus dispositivos permitem navegação em ambas frequências. A conexão via cabo proporciona maior estabilidade e menos interferência que o Wi-Fi.',
+                        'Velocidade Contratada: A velocidade informada no plano corresponde à taxa máxima de download e upload contratada, podendo variar conforme condições de uso, quantidade de dispositivos conectados e interferências externas. Para melhor desempenho, recomenda-se conexão via cabo de rede sempre que possível, seguindo orientações da Anatel e Terelink.',
+                        'Franquia de dados: Ilimitada.',
+                        '*Sujeito à análise de crédito.',
+                        'Consulte viabilidade: https://www.google.com/maps/d/u/0/edit?mid=1ShfK1tiFLnN9paq5J5yRAALdB52zVOs&usp=sharing'
+                    ]
+                },
+                '750 Mega': {
+                    price: 'R$ 129,90/mês',
+                    features: [
+                        'Instalação: O dia da instalação será definido de acordo com as datas e horários disponíveis, mediante consulta de viabilidade técnica no local. Após a confirmação, nossa equipe entrará em contato para agendar o melhor horário para você.',
+                        'Taxa de Adesão: A oferta possui taxa de adesão gratuita*, mediante permanência mínima de 12 meses. Em caso de cancelamento antes do prazo, será cobrado o valor proporcional.',
+                        'Equipamento: Os equipamentos necessários para transmissão de dados são cedidos em comodato, permanecendo como propriedade da Terelink. O ASSINANTE será responsável pela posse e integridade dos equipamentos, na forma dos artigos 579 a 585 do Código Civil Brasileiro, obrigando-se a realizar a manutenção necessária e a devolvê-los no prazo máximo de 7 (sete) dias por ocasião da extinção ou cancelamento do Contrato, nas mesmas condições de funcionamento, ressalvado o desgaste natural pelo uso. Em caso de não devolução ou devolução em condições inadequadas, o ASSINANTE autoriza a Terelink a cobrar o valor correspondente ao equipamento e a incluir seu nome nos órgãos de proteção ao crédito (ex.: SERASA), referente ao débito gerado.',
+                        'Tabela de Equipamentos:',
+                        'Huawei – ONU GPON Wi-Fi EG8145V5 v2 AC 1200 (com fonte): R$ 429,00',
+                        'Tenda – Roteador ONT GPON HG9 AC 1200 dualband 2 antenas (com fonte): R$ 278,80',
+                        'Nokia – ONT GPON G-0425G-C (com fonte): R$ 289,90',
+                        'PATCH CORD (SC/APC SC/UPC): R$ 10,00',
+                        'Cabo de rede (UTP) – 2flex: R$ 1,09/metro (cobrança proporcional)',
+                        'Cabo DROP (Fibra): R$ 2,00/metro (cobrança proporcional)',
+                        'Conector de Fibra Óptica (2 unidades): R$ 20,00',
+                        'Informações importantes para uma melhor experiência de navegação: Os dispositivos (smartphone, computador etc.) precisam ter as configurações mínimas necessárias para que atinjam o máximo de desempenho, tanto via cabo como via Wi-Fi. O roteador é dual-band, ou seja, tem frequência de 2,4 GHz e 5 GHz. Verifique se os seus dispositivos permitem navegação em ambas frequências. A conexão via cabo proporciona maior estabilidade e menos interferência que o Wi-Fi.',
+                        'Velocidade Contratada: A velocidade informada no plano corresponde à taxa máxima de download e upload contratada, podendo variar conforme condições de uso, quantidade de dispositivos conectados e interferências externas. Para melhor desempenho, recomenda-se conexão via cabo de rede sempre que possível, seguindo orientações da Anatel e Terelink.',
+                        'Franquia de dados: Ilimitada.',
+                        '*Sujeito à análise de crédito.',
+                        'Consulte viabilidade: https://www.google.com/maps/d/u/0/edit?mid=1ShfK1tiFLnN9paq5J5yRAALdB52zVOs&usp=sharing'
+                    ]
+                }
+            };
+
+            // Abrir modal ao clicar em um botão de plano
+            planButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const planName = button.getAttribute('data-plan');
+
+                    document.getElementById('modal-plan-name').textContent = planName;
+                    document.getElementById('modal-plan-price').textContent = planData[planName].price;
+
+                    const featuresList = document.getElementById('modal-plan-features');
+                    featuresList.innerHTML = '';
+
+                    planData[planName].features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.textContent = feature;
+                        featuresList.appendChild(li);
+                    });
+
+                    modal.style.display = 'flex';
+                });
+            });
+
+            // Fechar modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Fechar modal ao clicar fora dele
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
